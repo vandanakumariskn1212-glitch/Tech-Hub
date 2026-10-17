@@ -1,0 +1,88 @@
+{% extends 'student_base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if not request.session.email %}
+<script>
+    alert("You have to login first");
+    location.href = "/login/";
+</script>
+{% endif %}
+
+<div class="dashboard-shell">
+    <div class="container">
+        <div class="text-center mb-4">
+            <p class="dashboard-title mb-2">Welcome, <b class="text-mycolor1">{{ request.session.name|default:'Student' }}</b></p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-brands fa-python dashboardic" style="background: #004D40;"></i>
+                        <h4>Python</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-brands fa-java dashboardic" style="background: #F50057;"></i>
+                        <h4>Java</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-brands fa-bootstrap dashboardic" style="background: #004D40;"></i>
+                        <h4>Bootstrap</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-solid fa-code dashboardic" style="background: #F50057;"></i>
+                        <h4>C Programming</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-brands fa-js dashboardic" style="background: #004D40;"></i>
+                        <h4>JavaScript</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-brands fa-css3-alt dashboardic" style="background: #F50057;"></i>
+                        <h4>CSS</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-solid fa-c dashboardic" style="background: #004D40;"></i>
+                        <h4>C Language</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="dashboardcard text-center">
+                        <i class="fa-solid fa-database dashboardic" style="background: #F50057;"></i>
+                        <h4>Database</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

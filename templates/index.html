@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .slider {
+        min-height: 0;
+    }
+
+    .edu-hero {
+        padding: 3.5rem 0;
+    }
+
+    .hero-copy {
+        color: #fff;
+        padding-top: 1rem;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(1.9rem, 3.4vw, 3.4rem);
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 1rem;
+    }
+
+    .hero-copy p {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.9);
+        max-width: 620px;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2rem;
+    }
+
+    .edu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+    .edu-btn.primary {
+        background: #004D40;
+        color: #fff;
+    }
+
+    .edu-btn.primary:hover {
+        background: #003b33;
+        color: #fff;
+    }
+
+    .edu-btn.secondary {
+        border: 1px solid rgba(255,255,255,0.5);
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+    }
+
+    .edu-btn.secondary:hover {
+        background: rgba(255,255,255,0.18);
+    }
+
+    .hero-stats {
+        margin-top: 2.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .stat-box {
+        min-width: 120px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 18px;
+        padding: 1rem 1.1rem;
+        backdrop-filter: blur(3px);
+    }
+
+    .stat-box strong {
+        display: block;
+        font-size: 1.7rem;
+        color: #fff;
+    }
+
+    .stat-box span {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.88rem;
+    }
+
+    .edu-form {
+        background: rgba(9, 14, 16, 0.42);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 24px;
+        padding: 2rem 1.5rem;
+        box-shadow: 0 24px 50px rgba(0,0,0,0.18);
+    }
+
+    .edu-form h3 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .section-block {
+        padding: 4.5rem 0;
+    }
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 2.2rem;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .about-card {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.04);
+        border-radius: 24px;
+        box-shadow: 0 18px 40px rgba(12,25,32,0.06);
+        overflow: hidden;
+    }
+
+    .about-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 300px;
+    }
+
+    .about-card .card-body {
+        padding: 2rem;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        background: #fff;
+        border-radius: 22px;
+        border: 1px solid rgba(0,0,0,0.04);
+        padding: 1.5rem;
+        box-shadow: 0 14px 35px rgba(12,25,32,0.06);
+    }
+
+    .feature-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card h4 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 991.98px) {
+        .feature-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .edu-hero {
+            padding: 2.75rem 0;
+        }
+
+        .hero-copy {
+            text-align: center;
+        }
+
+        .hero-copy p {
+            margin: 0 auto;
+        }
+
+        .hero-actions {
+            justify-content: center;
+        }
+
+        .hero-stats {
+            justify-content: center;
+        }
+
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="row slider gx-0">
+    <div class="col-12">
+        <div class="container edu-hero">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-7 hero-copy">
+                    <h1>Learn smarter with <span class="text-mycolor2">Education Hub</span></h1>
+                    <p>Education Hub is a modern learning management system designed to help students gain practical skills, build confidence, and learn with live classes, expert guidance, and real-world project experience.</p>
+                    <div class="hero-actions">
+                        <a href="/register/" class="edu-btn primary">Register Now</a>
+                        <a href="/login/" class="edu-btn secondary">Login</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-box">
+                            <strong>10K+</strong>
+                            <span>Students</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>120+</strong>
+                            <span>Courses</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>95%</strong>
+                            <span>Success rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5">
+                    <div class="edu-form">
+                        <h3>Contact us</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" class="form-control txt" required placeholder="Name.." name="name"/>
+                            <input type="email" class="form-control txt" required placeholder="Email.." name="email"/>
+                            <input type="number" class="form-control txt" required placeholder="Mob.." name="mob"/>
+                            <textarea class="form-control ta" required placeholder="Message" name="msg"></textarea>
+                            <input type="submit" value="Save" class="form-control bg-mycolor1 btn1"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-block">
+    <div class="container">
+        <div class="section-heading">
+            <h2>About <span class="text-mycolor1">Us</span></h2>
+        </div>
+        <div class="row g-4 align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="about-card">
+                    <img src="{% static 'images/image2.jpg' %}" alt="About Education Hub" />
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="about-card">
+                    <div class="card-body">
+                        <p class="aboutcontent mb-3">At the heart of our e-learning platform is a bold vision—to transform the way people learn, grow, and succeed. We believe education should be flexible, personalized, and inspiring.</p>
+                        <p class="aboutcontent mb-0">Our platform brings together expert mentors, live instruction, digital resources, and practical learning projects to help students move from learning to successful careers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-block" style="background: #f3f7f6;">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Our <span class="text-mycolor1">Services</span></h2>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #004D40;">✓</div>
+                <h4>Expert-Led Courses</h4>
+                <p>High-quality, on-demand courses delivered by skilled teachers and industry experts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #F50057;">▶</div>
+                <h4>Live Classes & Webinars</h4>
+                <p>Interactive live sessions that help students clear doubts and stay engaged.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #004D40;">★</div>
+                <h4>Personalized Paths</h4>
+                <p>Custom learning journeys designed around each learner’s goals and skill level.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

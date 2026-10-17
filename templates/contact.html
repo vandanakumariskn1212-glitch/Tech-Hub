@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .contact-page {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, rgba(0,77,64,0.06), rgba(245,0,87,0.04));
+    }
+
+    .contact-shell {
+        background: #fff;
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: 0 22px 60px rgba(0,0,0,0.08);
+    }
+
+    .contact-form-col {
+        padding: 3rem 2.2rem;
+        background: #ffffff;
+    }
+
+    .contact-info-col {
+        background: linear-gradient(135deg, rgba(0,77,64,0.92), rgba(0,77,64,0.72)),
+                    url("{% static 'images/motivate3.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        padding: 3rem 2.2rem;
+        position: relative;
+    }
+
+    .contact-info-col::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.12);
+    }
+
+    .contact-info-col > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-form-title,
+    .contact-address-title {
+        font-size: clamp(1.8rem, 2.3vw, 2.4rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        background: #f7f7f7 !important;
+        border: 1px solid #e5e7eb !important;
+        color: #111827 !important;
+        border-radius: 14px !important;
+        padding: 0.9rem 1rem !important;
+        margin-bottom: 1rem;
+        box-shadow: none !important;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: #6b7280 !important;
+    }
+
+    .contact-form button,
+    .contact-form .submit-btn {
+        background: #004D40 !important;
+        border: none;
+        border-radius: 14px;
+        color: #fff !important;
+        font-weight: 700;
+        height: 52px !important;
+    }
+
+    .contact-info-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.75rem;
+    }
+
+    .contact-info-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.13);
+        backdrop-filter: blur(4px);
+    }
+
+    .contact-info-icon {
+        flex: 0 0 46px;
+        width: 46px;
+        height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: #fff;
+        color: #004D40;
+        font-size: 1.1rem;
+    }
+
+    .contact-info-label {
+        display: block;
+        margin-bottom: 0.2rem;
+        color: rgba(255,255,255,0.76);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .contact-info-value {
+        display: block;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-socials {
+        display: flex;
+        gap: 12px;
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .contact-socials i {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 767.98px) {
+        .contact-form-col,
+        .contact-info-col {
+            padding: 2rem 1.25rem;
+        }
+    }
+</style>
+
+<div class="contact-page">
+    <div class="container">
+        <div class="text-center mb-4">
+            <p class="fs-3 fw-bold">Contact <b class="text-mycolor1">Us</b></p>
+        </div>
+
+        <div class="row contact-shell g-0 mx-auto" style="max-width: 1100px;">
+            <div class="col-12 col-lg-6 contact-form-col">
+                <div class="contact-form-title text-dark">Send us a message</div>
+                <form method="post" class="contact-form">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" required placeholder="Name.." name="name"/>
+                    <input type="email" class="form-control" required placeholder="Email.." name="email"/>
+                    <input type="number" class="form-control" required placeholder="Mob.." name="mob"/>
+                    <textarea class="form-control" required placeholder="Message" name="msg" rows="5"></textarea>
+                    <button type="submit" class="form-control submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="col-12 col-lg-6 contact-info-col">
+                <div class="contact-address-title">We'd love to hear from you</div>
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-location-dot contact-info-icon"></i>
+                        <div>
+                            <span class="contact-info-label">Our address</span>
+                            <span class="contact-info-value">District-Basti, Block-Rudhauli, Village-Jigina, Pincode-272001</span>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-phone contact-info-icon"></i>
+                        <div>
+                            <span class="contact-info-label">Call us</span>
+                            <span class="contact-info-value">+91-8104064863</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-socials">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-square-twitter"></i>
+                    <i class="fa-brands fa-square-youtube"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

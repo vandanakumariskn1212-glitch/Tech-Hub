@@ -1,0 +1,367 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Education Hub</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <style>
+            :root {
+                --primary: #004D40;
+                --secondary: #F50057;
+                --light: #f8f9fa;
+                --dark: #111827;
+                --muted: #6c757d;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #f5f7fb;
+                color: var(--dark);
+            }
+
+            .bg-mycolor2 { background-color: var(--secondary); }
+            .bg-mycolor1 { background-color: var(--primary); }
+            .text-mycolor2 { color: var(--secondary); }
+            .text-mycolor1 { color: var(--primary); }
+
+            .ic {
+                color: var(--primary);
+                height: 28px;
+                width: 28px;
+                border: 2px solid var(--primary);
+                border-radius: 50%;
+                text-align: center;
+                line-height: 28px;
+                transition: all 0.3s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 8px;
+            }
+            .ic:hover {
+                transform: translateY(-2px);
+                background-color: var(--primary);
+                color: #fff;
+            }
+
+            .site-header {
+                background: linear-gradient(135deg, #ffffff, #eff5f3);
+                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            }
+
+            .brand-text {
+                letter-spacing: 0.04em;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                flex-wrap: nowrap;
+                line-height: 1.1;
+                font-size: 1.6rem;
+            }
+
+            .brand-text span {
+                display: inline-block;
+            }
+
+            .brand-text b {
+                color: var(--secondary);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3rem;
+                font-size: 1.6rem;
+            }
+
+            .contact-block {
+                font-size: 0.92rem;
+                overflow-wrap: anywhere;
+            }
+
+            .top-socials {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu-wrap {
+                background: var(--primary);
+                box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+            }
+
+            #menu {
+                background-color: transparent !important;
+            }
+
+            #menu .navbar-nav {
+                width: 100%;
+                justify-content: center;
+                gap: 0.25rem;
+            }
+
+            #menu .nav-link {
+                color: white !important;
+                font-weight: 600;
+                padding: 0.8rem 1rem;
+                border-radius: 10px;
+                transition: 0.2s ease;
+            }
+
+            #menu .nav-link:hover,
+            #menu .nav-link.active {
+                background: rgba(255,255,255,0.12);
+            }
+
+            .navbar-toggler {
+                border-color: rgba(255,255,255,0.5);
+                background: rgba(255,255,255,0.06);
+                margin-left: auto;
+            }
+
+            .navbar-toggler-icon {
+                filter: invert(1);
+            }
+
+            .slider {
+                min-height: 500px;
+                background: linear-gradient(45deg, rgba(0,0,0,.6), rgba(245,0,87,.25)), url("{% static 'images/plc img.webp' %}");
+                background-size: cover;
+                background-attachment: fixed;
+                padding: 4rem 0;
+            }
+
+            .aboutcontent { font-size: 1rem; }
+            .imgabout { height: 260px; object-fit: cover; }
+            .serviceimg { height: 80px; object-fit: cover; }
+
+            .ufooter {
+                min-height: 250px;
+                background: #0c0c0d;
+                color: #fff;
+                padding: 2rem 0;
+            }
+
+            .ufooter a {
+                color: #dfe8f6;
+                text-decoration: none;
+            }
+
+            .ufooter a:hover {
+                color: #fff;
+            }
+
+            .bfooter {
+                background: #050505;
+                color: white;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .txt {
+                height: 50px;
+                margin-bottom: 4%;
+                background: transparent !important;
+                border: none !important;
+                border-bottom: 2px solid white !important;
+                border-radius: 0px !important;
+                color: #fff !important;
+            }
+            .ta {
+                height: 80px;
+                margin-bottom: 4%;
+                background: transparent !important;
+                border: none !important;
+                border-bottom: 2px solid white !important;
+                border-radius: 0px !important;
+                color: #fff !important;
+            }
+            ::placeholder { color: rgba(255,255,255,0.8) !important; }
+
+            .btn1 {
+                height: 50px !important;
+                color: white !important;
+            }
+
+            .login {
+                background: rgba(0,0,0,.35);
+                backdrop-filter: blur(5px);
+                border-radius: 20px;
+            }
+
+            @media (max-width: 991.98px) {
+                .header-row {
+                    text-align: center;
+                }
+
+                .brand-text {
+                    justify-content: center;
+                    font-size: clamp(1.2rem, 5vw, 1.6rem);
+                }
+
+                .brand-text b {
+                    font-size: inherit;
+                }
+
+                .contact-block {
+                    justify-content: center;
+                }
+
+                .top-socials {
+                    justify-content: center;
+                    margin-top: 0;
+                }
+
+                #menu .navbar-nav {
+                    padding: 0.75rem 0;
+                }
+
+                .slider {
+                    background-attachment: scroll;
+                    min-height: auto;
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                .site-header .col-12.py-4 {
+                    padding-top: 1rem !important;
+                    padding-bottom: 1rem !important;
+                }
+
+                .contact-block {
+                    font-size: 0.8rem;
+                    min-width: 0;
+                }
+
+                .contact-block span {
+                    min-width: 0;
+                    text-align: left;
+                }
+
+                .top-socials {
+                    gap: 6px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid p-0">
+            <div class="row site-header gx-0">
+                <div class="col-12 py-4">
+                    <div class="container">
+                        <div class="row align-items-center g-3">
+                            <div class="col-12 col-lg-3">
+                                <div class="brand-text fs-2 text-dark">
+                                    <span>EDUCATION</span>
+                                    <b>HUB <i class="fa-solid fa-graduation-cap"></i></b>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 contact-block d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa-solid fa-envelope ic"></i>
+                                <span><b>Mail Us</b><br>van***********@gmail.com</span>
+                            </div>
+                            <div class="col-6 col-lg-3 contact-block d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa-solid fa-phone ic"></i>
+                                <span><b>Call Us</b><br>92********</span>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <div class="top-socials">
+                                    <i class="fa-brands fa-square-facebook ic"></i>
+                                    <i class="fa-brands fa-square-twitter ic"></i>
+                                    <i class="fa-brands fa-square-youtube ic"></i>
+                                    <i class="fa-brands fa-linkedin ic"></i>
+                                    <i class="fa-brands fa-instagram ic"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row menu-wrap gx-0">
+                <div class="col-12">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-lg px-0" id="menu">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index/"><i class="fa-solid fa-house"></i> Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/aboutus/"><i class="fa-solid fa-building"></i> About Us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/register/"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/services/"><i class="fa-solid fa-gear"></i> Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/contact/"><i class="fa-solid fa-phone"></i> Contact us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/gallery/"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/team/"><i class="fa-solid fa-user-group"></i> Team</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/category/"><i class="fa-solid fa-tags"></i> Category</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/login/"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/logout/"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gx-0">
+                <div class="col-12">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="row ufooter gx-0">
+                <div class="col-12">
+                    <div class="container">
+                        <div class="row g-4 py-4">
+                            <div class="col-12 col-md-3">
+                                <h5>About Education Hub</h5>
+                                <p class="mb-0" style="font-size: 12px; line-height: 1.8;">Education Hub is a smart learning management system built to make education accessible, practical, and career-focused. Students can access courses, notes, digital resources, and project-based learning in one powerful platform.</p>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <p><a href="/index/"><i class="fa-solid fa-arrow-right"></i> Home</a></p>
+                                <p><a href="/aboutus/"><i class="fa-solid fa-arrow-right"></i> About Us</a></p>
+                                <p><a href="/team/"><i class="fa-solid fa-arrow-right"></i> Our Team</a></p>
+                                <p><a href="/contact/"><i class="fa-solid fa-arrow-right"></i> Contact Us</a></p>
+                                <p><a href="/services/"><i class="fa-solid fa-arrow-right"></i> Our Services</a></p>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <p><a href="/index/"><i class="fa-solid fa-arrow-right"></i> Home</a></p>
+                                <p><a href="/aboutus/"><i class="fa-solid fa-arrow-right"></i> About Us</a></p>
+                                <p><a href="/team/"><i class="fa-solid fa-arrow-right"></i> Our Team</a></p>
+                                <p><a href="/contact/"><i class="fa-solid fa-arrow-right"></i> Contact Us</a></p>
+                                <p><a href="/services/"><i class="fa-solid fa-arrow-right"></i> Our Services</a></p>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <h5>Get in Touch</h5>
+                                <p><i class="fa-solid fa-location-dot"></i> District-Basti, Block-Rudhauli, Village-Jigina, Pincode-272001</p>
+                                <p><i class="fa-solid fa-phone"></i> +91-9235018128</p>
+                                <p><i class="fa-solid fa-phone"></i> +91-8104064863</p>
+                                <p>
+                                    <i class="fa-brands fa-square-facebook"></i>
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <i class="fa-brands fa-twitter"></i>
+                                    <i class="fa-brands fa-youtube"></i>
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row bfooter gx-0">
+                <div class="col-12 text-center px-3">
+                    Developed by Education Hub &copy; <a href="http://www.techpile.in" target="_blank" class="text-light">Techpile Technology</a>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   </body>
+</html>
